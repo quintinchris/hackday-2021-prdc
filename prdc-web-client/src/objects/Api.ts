@@ -1,8 +1,10 @@
 import { JiraTicket } from "./Data";
 
 interface PrdcServerApiClient {
-	getUnclaimedTickets(): Promise<JiraTicket[]>;
-	getTicketsOwned(): Promise<JiraTicket[]>;
+	getProjects(): Promise<JiraProject[]>;
+	getUnclaimedTickets(project: JiraProject): Promise<JiraTicket[]>;
+	getAllTicketsClaimed(project: JiraProject): Promise<JiraTicket[]>;
+	getUserTicketsClaimed(project: JiraProject): Promise<JiraTicket[]>;
 	claimTicket(ticketToClaim: JiraTicket): Promise<void>;
 }
 
