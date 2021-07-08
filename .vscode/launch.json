@@ -1,0 +1,68 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "MDC Scorecard Dev | API: local proxy",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"env": {
+				"MDC_WS_BASE_URL": "http://localhost"
+			},
+			"program": "${workspaceFolder}\\packages\\host\\dev.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "MDC Scorecard Dev | API: default",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			/*"env": {
+				"MDC_WS_BASE_URL": "http://localhost"
+			},*/
+			"program": "${workspaceFolder}\\packages\\host\\dev.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "MDC Scorecard Dev | API: QA",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"env": {
+				"MDC_WS_BASE_URL": "http://qacv2intws.moodys.com"
+			},
+			"program": "${workspaceFolder}\\packages\\host\\dev.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "MDC Scorecard Dev | API: UAT",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"env": {
+				"MDC_WS_BASE_URL": "http://uat.intapi-a.csr.tld"
+			},
+			"program": "${workspaceFolder}\\packages\\host\\dev.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "MDC Scorecard Dev | API: E2E3",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"env": {
+				"MDC_WS_BASE_URL": "http://e2e3intws.moodys.com"
+			},
+			"program": "${workspaceFolder}\\packages\\host\\dev.js"
+		}
+	]
+}
