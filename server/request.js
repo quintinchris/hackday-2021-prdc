@@ -1,5 +1,6 @@
-const axios = require("axios");
-require("dotenv").config();
+import axios from 'axios';
+import dotenv from 'dotenv'
+dotenv.config();
 const searchURL = "https://ma-contentsolutions.atlassian.net/rest/api/2/search";
 // const jql = 'resolution%20is%20empty';
 // const jiraAPI = `${searchURL}?jql=${jql}`;
@@ -10,7 +11,7 @@ const chrisEmail = "chris.quintin@moodys.com";
 const issueFieldsUrl =
   "http://ma-contentsolutions.atlassian.net/rest/api/2/field";
 
-createAuthToken = (email) => {
+let createAuthToken = (email) => {
   let authToken = `Basic ${Buffer.from(
     `${email}:${process.env.API_TOKEN}`
   ).toString("base64")}`;
@@ -18,23 +19,7 @@ createAuthToken = (email) => {
   return authToken;
 };
 
-callJira = async (authToken) => {
-  const res = await axios
-    .get(jiraAPI, {
-      headers: {
-        Accept: "application/json",
-        Authorization: `${authToken}`,
-      },
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-getProjectsFromJira = async () => {
+let getProjectsFromJira = async () => {
   const authToken = createAuthToken(chrisEmail);
   const res = await axios
     .get(projectsURL, {
@@ -51,7 +36,7 @@ getProjectsFromJira = async () => {
           Name: response.data.projects[i].name,
         });
       }
-      //   console.log(response.data.projects);
+        console.log(response.data.projects);
       return projects;
     })
     .catch((error) => {
@@ -59,7 +44,7 @@ getProjectsFromJira = async () => {
     });
 };
 
-getJiraTickets = async (projectID) => {
+let getJiraTickets = async (projectID) => {
   const authToken = createAuthToken(chrisEmail);
   const res = await axios
     .get(searchURL, {
@@ -72,6 +57,7 @@ getJiraTickets = async (projectID) => {
       },
     })
     .then((response) => {
+        // TODO: grab fields that we care about from tickets
       console.log(response.data);
     })
     .catch((error) => {
@@ -83,5 +69,4 @@ getJiraTickets = async (projectID) => {
 // prompt user to select a project
 // get user response
 
-
-export default { getProjectsFromJira, getJiraTickets };
+getProjectsFromJira();
