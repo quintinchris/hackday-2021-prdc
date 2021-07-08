@@ -1,4 +1,7 @@
 const fastify = require('fastify')({ logger: true })
+import * as fastify from "fastify";
+require('dotenv').config();
+
 
 // Declare a route
 fastify.get('/', async (request, reply) => {
