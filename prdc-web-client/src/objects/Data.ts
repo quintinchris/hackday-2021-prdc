@@ -1,5 +1,17 @@
 import { PrdcServerApiClient } from "./Api";
 
+interface App_Props {
+
+}
+
+interface App_State {
+	currentMessages: Message[];
+	user: CurrentUser;
+	apiClient: PrdcServerApiClient;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
 interface JiraPerson {
 	fullName: string;
 }
@@ -30,13 +42,17 @@ interface Message {
 	senderName: string;
 	timeSent: Date;
 	title?: string;
-	messageMarkdown: string;
+	content: MessageContent;
 }
+
+type MessageContent = string | JiraTicket[];
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
 interface CMessage_Props { 
-	messageContent: Message;
+	message: Message;
+	user: CurrentUser;
+	apiClient: PrdcServerApiClient;
 }
 
 interface CMessage_State { 
@@ -65,15 +81,15 @@ interface CTicketDisplay_Props {
 	apiClient: PrdcServerApiClient;
 }
 
-
 interface CTicketDisplay_State {
 	visible: boolean;
 }
 
+
 export type {
 	CMessage_Props, CMessage_State, JiraPerson, JiraTicket, Message,
 	CClaimButton_Props, CClaimButton_State, CTicketDisplay_Props, 
-	CTicketDisplay_State, CurrentUser
+	CTicketDisplay_State, CurrentUser, MessageContent, App_Props, App_State
 };
 
 export {
