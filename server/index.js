@@ -4,7 +4,7 @@ require('dotenv').config();
 
 
 // Declare a route
-fastify.get('/', async (request, reply) => {
+fastify.get('/projects', async (request, reply) => {
   return { hello: 'world' }
 })
 
