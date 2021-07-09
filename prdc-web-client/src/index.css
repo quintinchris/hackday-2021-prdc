@@ -38,6 +38,12 @@ code {
   margin-bottom: 20px;
 }
 
+.PaddedActions {
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .UserMessageTitle {
   color: #FF5555
 }

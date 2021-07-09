@@ -68,7 +68,8 @@ const mockMessages: Message[] = [
 ]
 
 const mockUser: CurrentUser = {
-	fullName: `Rohith Hegde`
+	fullName: `Rohith Hegde`,
+	emailAddress: `nil@null.nl`
 }
 
 export {
