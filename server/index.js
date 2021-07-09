@@ -2,7 +2,6 @@ import Fastify from "fastify";
 import axios from "axios";
 import dotenv from 'dotenv'
 dotenv.config({});
-// import {} from "dotenv/config";
 const server = Fastify({ logger: true });
 
 const searchURL = "https://ma-contentsolutions.atlassian.net/rest/api/2/search";
@@ -42,6 +41,7 @@ const getProjectsFromJira = async (authToken) => {
 };
 
 const getJiraTickets = async (authToken, projectID) => {
+  let tickets = [];
   const res = await axios
     .get(searchURL, {
       headers: {
@@ -57,11 +57,23 @@ const getJiraTickets = async (authToken, projectID) => {
     })
     .then((response) => {
       // TODO: grab fields that we care about from tickets
+      for (let i = 0; i < response.data.issues.length; i++) {
+        tickets.push({
+          ID: response.data.issues[i].key,
+          Title: response.data.issues[i].fields.summary,
+          Status: response.data.issues[i].fields.status.name,
+          Priority: response.data.issues[i].fields.priority.name,
+          Type: response.data.issues[i].fields.issuetype.name,
+          Release: response.data.issues[i].fields.fixVersions.name,
+        })
+      }
       console.log(response.data);
     })
     .catch((error) => {
       console.log(error);
     });
+
+    return tickets;
 };
 
 // get all projects for a user
@@ -73,8 +85,7 @@ server.get("/projects", async (request, reply) => {
 // get open tickets within a project
 server.get("/opentickets", async (request, reply) => {
   const authToken = createAuthToken(chrisEmail);
-  const openTickets = getJiraTickets(authToken, 13511);
-  return { openTickets };
+  return getJiraTickets(authToken, 13511);
 });
 
 // get all tickets for a project
