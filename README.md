@@ -131,7 +131,8 @@ This is an example of how to list things you need to use the software and how to
    ```
 2. Install NPM packages
    ```sh
-   npm install
+   cd server && npm install
+   cd prdc-web-client && npm install
    ```
 3. Start the server
    ```sh
