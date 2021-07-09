@@ -58,12 +58,50 @@ const getOpenJiraTickets = async (projectID) => {
       },
     })
     .then((response) => {
-      // TODO: grab fields that we care about from tickets
       for (let i = 0; i < response.data.issues.length; i++) {
         tickets.push({
           ID: response.data.issues[i].key,
           Title: response.data.issues[i].fields.summary,
           // Description: response.data.issues[i].fields.description,
+          Status: response.data.issues[i].fields.status.name,
+          Priority: response.data.issues[i].fields.priority.name,
+          Type: response.data.issues[i].fields.issuetype.name,
+          Release: response.data.issues[i].fields.fixVersions.name,
+        })
+      }
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    console.log(tickets);
+    return tickets;
+};
+
+const getAllJiraTickets = async (projectID) => {
+  const authToken = createAuthToken(chrisEmail);
+  let tickets = [];
+  const res = await axios
+    .get(searchURL, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `${authToken}`,
+      },
+      params: {
+        jql:
+          "project = " +
+          projectID +
+          " AND statusCategory != 3 AND type != Subtask AND type != Sub-task AND type != Epic ORDER BY fixVersion DESC, priority DESC",
+      },
+    })
+    .then((response) => {
+      for (let i = 0; i < response.data.issues.length; i++) {
+        tickets.push({
+          ID: response.data.issues[i].key,
+          Title: response.data.issues[i].fields.summary,
+          // Description: response.data.issues[i].fields.description,
+          Assignee: response.data.issues[i].fields.assignee.displayName,
           Status: response.data.issues[i].fields.status.name,
           Priority: response.data.issues[i].fields.priority.name,
           Type: response.data.issues[i].fields.issuetype.name,
@@ -92,7 +130,7 @@ server.get("/opentickets", async (request, reply) => {
 
 // get all tickets for a project
 server.get("/alltickets", async (request, reply) => {
-  return { hello: "world" };
+  return getAllJiraTickets(13511);
 });
 
 // assign a ticket to the user
