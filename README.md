@@ -137,7 +137,10 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    cd server && node index.js
    ```
-
+   or
+   ```sh
+   cd prdc-web-client && npm run server
+   ```
 
 
 <!-- USAGE EXAMPLES -->
