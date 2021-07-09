@@ -1,13 +1,15 @@
 1. Make GET request to Jira
-    [] Filter for projects that you're a part of
-    [] filter for in-progress or to-do that are assigned to user
-    [] filter for backlog
-        [] Release
-        [] Priority
-    [] filter out sub-tasks, only find stories, tasks, defect/bug, etc
+    [X] Filter for projects that you're a part of
+    [X] filter for in-progress or to-do that are assigned to user
+    [X] filter for backlog
+        [X] Release
+        [X] Priority
+    [X] filter out sub-tasks, only find stories, tasks, defect/bug, etc
 2. Make API to listen for routes
-    - one to get open tickets
-    - another to assign ticket to yourself
+    [X] get projects
+    [X] get open tickets for that project
+    [X] get all tickets for that project
+    [X] assign a ticket to the user
 3. Make front end to display data
     - console?
     - React?
