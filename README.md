@@ -47,11 +47,11 @@
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/QuintinChris/hackday-2021-prdc">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/QuintinChris/hackday-2021-prdc/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/QuintinChris/hackday-2021-prdc/issues">Request Feature</a>
   </p>
 </p>
 
@@ -95,12 +95,12 @@ Our intentions were to build a Slack app to use with our API, however we realize
 
 ### Built With
 
-* [React]()
-* [Node.js]()
-* [Jira API]()
-* [TypeScript]()
-* [Axios]()
-* [Fastify]()
+* [React](https://reactjs.org/)
+* [Node.js](https://nodejs.org/)
+* [Jira API](https://developer.atlassian.com/server/jira/platform/rest-apis/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Axios](https://github.com/axios/axios)
+* [Fastify](https://www.fastify.io/)
 
 
 
@@ -137,6 +137,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    cd server && node index.js
    ```
+   This will start the server on http://localhost:3001
 
 
 
@@ -145,23 +146,23 @@ This is an example of how to list things you need to use the software and how to
 ###API Routes
 1. Get a user by Email
    ```sh
-   http://localhost:3000/user:/userEmail
+   http://localhost:3001/user:/userEmail
    ```
 2. Get all projects
    ```sh
-   http://localhost:3000/projects
+   http://localhost:3001/projects
    ```
 3. Get all tickets within a project 
    ```sh
-   http://localhost:3000/alltickets/:projectKey
+   http://localhost:3001/alltickets/:projectKey
    ```
 4. Get all open (unassigned) tickets within a project 
    ```sh
-   http://localhost:3000/opentickets/:projectKey
+   http://localhost:3001/opentickets/:projectKey
    ```
 5. Assign a user to a ticket (PUT)
    ```sh
-   http://localhost:3000/assign/:userEmail/:ticketId
+   http://localhost:3001/assign/:userEmail/:ticketId
    ```
 
 
@@ -170,7 +171,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/QuintinChris/hackday-2021-prdc/issues) for a list of proposed features (and known issues).
 
 
 
@@ -197,9 +198,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Contributors:
+- [Rohith Hegde](https://github.com/HegdeRohith) 
+- [Demi Jiang](https://github.com/czsyjss) 
+- [Prasanth Louis](https://github.com/prasanthlouis) 
+- [Chris Quintin](https://github.com/QuintinChris)
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/QuintinChris/hackday-2021-prdc](https://github.com/QuintinChris/hackday-2021-prdc)
 
 
 
