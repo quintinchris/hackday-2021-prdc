@@ -43,7 +43,7 @@ const getProjectsFromJira = async () => {
   return projects;
 };
 
-const getOpenJiraTickets = async (projectID) => {
+const getOpenJiraTickets = async (projectKey) => {
   const authToken = createAuthToken(chrisEmail);
   let tickets = [];
   const res = await axios
@@ -55,7 +55,7 @@ const getOpenJiraTickets = async (projectID) => {
       params: {
         jql:
           "project = " +
-          projectID +
+          projectKey +
           " AND assignee is EMPTY AND statusCategory != 4 AND statusCategory != 3 AND type != Subtask AND type != Sub-task AND type != Epic ORDER BY fixVersion DESC, priority DESC",
       },
     })
@@ -102,7 +102,7 @@ const getAllJiraTickets = async (projectID) => {
           ID: response.data.issues[i].key,
           Title: response.data.issues[i].fields.summary,
           // Description: response.data.issues[i].fields.description,
-          Assignee: response.data.issues[i].fields.assignee.displayName,
+          Assignee: response.data.issues[i].fields.assignee ? response.data.issues[i].fields.assignee.displayName : null,
           Status: response.data.issues[i].fields.status.name,
           Priority: response.data.issues[i].fields.priority.name,
           Type: response.data.issues[i].fields.issuetype.name,
@@ -118,7 +118,31 @@ const getAllJiraTickets = async (projectID) => {
   return tickets;
 };
 
-const getUserByEmail = async (userEmail) => {
+const getUserbyEmail = async (userEmail, ticketId) => {
+  const authToken = createAuthToken(chrisEmail);
+  let user = {};
+  const res = await axios
+    .get(searchURL, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `${authToken}`,
+      },
+      params: {
+        jql:
+          "assignee = " + `"${userEmail.toString()}"`,
+      }, 
+    })
+    .then((response) => {
+      user.accountId = response.data.issues[0].fields.assignee.accountId;
+      user.name = response.data.issues[0].fields.assignee.displayName;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    return user;
+};
+
+const getUserAndAssignTicket = async (userEmail, ticketId) => {
   const authToken = createAuthToken(chrisEmail);
   let user = {};
   let ticket;
@@ -136,7 +160,7 @@ const getUserByEmail = async (userEmail) => {
     .then((response) => {
       user.accountId = response.data.issues[0].fields.assignee.accountId;
       user.name = response.data.issues[0].fields.assignee.displayName;
-      ticket = assignTicketToUser(user.accountId, 'MDCPT-448');
+      ticket = assignTicketToUser(user.accountId, ticketId);
     })
     .catch((error) => {
       console.log(error);
@@ -174,23 +198,23 @@ server.get("/projects", async (request, reply) => {
 });
 
 // get open tickets within a project
-server.get("/opentickets", async (request, reply) => {
-  return getOpenJiraTickets(13511);
+server.get("/opentickets/:projectKey", async (request, reply) => {
+  return getOpenJiraTickets(request.params.projectKey);
 });
 
 // get all tickets for a project
-server.get("/alltickets", async (request, reply) => {
-  return getAllJiraTickets(13511);
+server.get("/alltickets/:projectKey", async (request, reply) => {
+  return getAllJiraTickets(request.params.projectKey);
 });
 
 // get a user by email
-server.get("/user", async (request, reply) => {
-  return getUserByEmail(chrisEmail);
+server.get("/user:/userEmail", async (request, reply) => {
+  return getUserbyEmail(request.params.userEmail);
 });
 
 // assign a ticket to the user
-server.put("/assign", async (request, reply) => {
-  return getUserByEmail(chrisEmail);
+server.put("/assign/:userEmail/:ticketId", async (request, reply) => {
+  return getUserAndAssignTicket(request.params.userEmail, request.params.ticketId);
 });
 
 // Run the server!
