@@ -2,20 +2,17 @@ import axios from 'axios';
 import dotenv from 'dotenv'
 dotenv.config();
 const searchURL = "https://ma-contentsolutions.atlassian.net/rest/api/2/search";
-// const jql = 'resolution%20is%20empty';
-// const jiraAPI = `${searchURL}?jql=${jql}`;
 const projectsURL =
   "http://ma-contentsolutions.atlassian.net/rest/api/2/issue/createmeta";
 const prasanthEmail = "prasanth.louis@moodys.com";
 const chrisEmail = "chris.quintin@moodys.com";
-const issueFieldsUrl =
-  "http://ma-contentsolutions.atlassian.net/rest/api/2/field";
 
 let createAuthToken = (email) => {
+    console.log(process.env.API_TOKEN);
   let authToken = `Basic ${Buffer.from(
     `${email}:${process.env.API_TOKEN}`
   ).toString("base64")}`;
-  //   console.log(authToken);
+    console.log(authToken);
   return authToken;
 };
 
@@ -69,4 +66,5 @@ let getJiraTickets = async (projectID) => {
 // prompt user to select a project
 // get user response
 
-getProjectsFromJira();
+// getProjectsFromJira();
+createAuthToken(chrisEmail);
