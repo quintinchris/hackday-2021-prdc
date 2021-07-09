@@ -1,11 +1,15 @@
 import { CClaimButton_Props, CClaimButton_State, ClaimState } from "../objects/Data";
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert"
+
+const ERROR_CLEAR_MS: number = 5000;
 
 class CClaimButton extends React.Component<CClaimButton_Props, CClaimButton_State> {
 	state: CClaimButton_State = {
 		claimed: ClaimState.UNCLAIMED,
-		loading: false
+		loading: false,
+		errorMessage: undefined
 	};
 
 	constructor(props: CClaimButton_Props) {
@@ -73,13 +77,21 @@ class CClaimButton extends React.Component<CClaimButton_Props, CClaimButton_Stat
 			if (this.props.callback_claimed)
 				await this.props.callback_claimed();
 		} catch (err) {
-			console.error(`Error attempting to claim ticket: ${err.message}`)
+			const newErr: Error = new Error(`Error attempting to claim ticket: ${err.message}`);
+			console.error(newErr)
 			console.trace(err);
 
 			this.setState({
 				claimed: ClaimState.ERROR,
-				loading: false
+				loading: false,
+				errorMessage: newErr.message
 			});
+
+			setTimeout(() => {
+				this.setState({
+					errorMessage: ``
+				});
+			}, ERROR_CLEAR_MS)
 			return Promise.resolve();
 		}
 
@@ -94,12 +106,20 @@ class CClaimButton extends React.Component<CClaimButton_Props, CClaimButton_Stat
 
 	render() {
 		return (
-			<Button 
-				disabled={this.getButtonDisabled()} 
-				onClick={async() => await this.claimTicket()}
-			>
-				{this.getButtonText()}
-			</Button>
+			<div>
+				<Button 
+					disabled={this.getButtonDisabled()} 
+					onClick={async() => await this.claimTicket()}
+					variant={this.getButtonVariant()}
+				>
+					{this.getButtonText()}
+				</Button>
+				{ this.state.errorMessage ? 
+					<Alert className="PaddedAlert" key="key" variant="danger">
+						{this.state.errorMessage}
+					</Alert>
+				: ``}
+			</div>
 		)
 	}
 }

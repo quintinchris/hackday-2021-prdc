@@ -2,12 +2,13 @@ import React from "react";
 import { CTicketDisplay_Props, CTicketDisplay_State, CClaimButton_Props, CClaimButton_State } from "../objects/Data";
 import CClaimButton from "./CClaimButton";
 import Card from "react-bootstrap/Card";
+import "../index.css";
 
 const MAX_DESC_LENGTH: number = 100;
 
 class CTicketDisplay extends React.Component<CTicketDisplay_Props, CTicketDisplay_State> {
 	state: CTicketDisplay_State = {
-		visible: true
+		visible: true,
 	}
 
 	getIntroText(): string {
@@ -27,11 +28,11 @@ class CTicketDisplay extends React.Component<CTicketDisplay_Props, CTicketDispla
 
 	render() {
 		return (
-			<Card>
+			<Card className="PaddedCard">
 				<Card.Body>
 					<Card.Title>{this.props.ticket.title}</Card.Title>
 					<Card.Subtitle>{this.props.ticket.ticketId}</Card.Subtitle>
-					<Card.Text>{this.getIntroText()}</Card.Text>
+					<Card.Text className="PaddedTicketDesc">{this.getIntroText()}</Card.Text>
 					<CClaimButton {...this.getClaimButtonProps()}/>
 				</Card.Body>
 			</Card>

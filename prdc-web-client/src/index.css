@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.WideCenterToast {
+  min-width: 80%;
+  margin: 5px;
+}
+
+.WideCenterRow {
+  min-width: 80%;
+}
+
+.PaddedToast {
+  margin: 5px;
+}
+
+.PaddedCard {
+  margin-top: 10px;
+}
+
+.PaddedAlert {
+  margin-top: 10px;
+}
+
+.PaddedTicketDesc {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.UserMessageTitle {
+  color: #FF5555
+}

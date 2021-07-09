@@ -21,6 +21,7 @@ interface CurrentUser extends JiraPerson {
 }
 
 interface JiraTicket {
+	project: JiraProject;
 	title: string;
 	ticketId: string;
 	status: string;
@@ -31,10 +32,16 @@ interface JiraTicket {
 	assignee?: JiraPerson;
 	pairAssignee?: JiraPerson;
 
-	labels: string[];
+	labels?: string[];
 	epicName?: string;
 	teamName?: string;
 	environment?: string;
+}
+
+interface JiraProject {
+	id: number;
+	key: string;
+	name: string;
 }
 
 interface Message {
@@ -42,10 +49,9 @@ interface Message {
 	senderName: string;
 	timeSent: Date;
 	title?: string;
-	content: MessageContent;
+	text: string;
+	tickets?: JiraTicket[];
 }
-
-type MessageContent = string | JiraTicket[];
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -73,6 +79,7 @@ enum ClaimState {
 interface CClaimButton_State {
 	claimed: ClaimState;
 	loading: boolean;
+	errorMessage?: string;
 }
 
 interface CTicketDisplay_Props {
@@ -89,7 +96,8 @@ interface CTicketDisplay_State {
 export type {
 	CMessage_Props, CMessage_State, JiraPerson, JiraTicket, Message,
 	CClaimButton_Props, CClaimButton_State, CTicketDisplay_Props, 
-	CTicketDisplay_State, CurrentUser, MessageContent, App_Props, App_State
+	CTicketDisplay_State, CurrentUser, App_Props, 
+	App_State, JiraProject
 };
 
 export {
