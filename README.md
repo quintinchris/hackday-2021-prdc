@@ -145,23 +145,23 @@ This is an example of how to list things you need to use the software and how to
 ###API Routes
 1. Get a user by Email
    ```sh
-   http://localhost:3000/user:/userEmail
+   http://localhost:3001/user:/userEmail
    ```
 2. Get all projects
    ```sh
-   http://localhost:3000/projects
+   http://localhost:3001/projects
    ```
 3. Get all tickets within a project 
    ```sh
-   http://localhost:3000/alltickets/:projectKey
+   http://localhost:3001/alltickets/:projectKey
    ```
 4. Get all open (unassigned) tickets within a project 
    ```sh
-   http://localhost:3000/opentickets/:projectKey
+   http://localhost:3001/opentickets/:projectKey
    ```
 5. Assign a user to a ticket (PUT)
    ```sh
-   http://localhost:3000/assign/:userEmail/:ticketId
+   http://localhost:3001/assign/:userEmail/:ticketId
    ```
 
 
