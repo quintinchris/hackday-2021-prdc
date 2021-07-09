@@ -17,7 +17,8 @@ const createAuthToken = (email) => {
   return authToken;
 };
 
-const getProjectsFromJira = async (authToken) => {
+const getProjectsFromJira = async () => {
+  const authToken = createAuthToken(chrisEmail);
   let projects = [];
   const res = await axios
     .get(projectsURL, {
@@ -40,7 +41,8 @@ const getProjectsFromJira = async (authToken) => {
   return projects;
 };
 
-const getJiraTickets = async (authToken, projectID) => {
+const getOpenJiraTickets = async (projectID) => {
+  const authToken = createAuthToken(chrisEmail);
   let tickets = [];
   const res = await axios
     .get(searchURL, {
@@ -61,6 +63,7 @@ const getJiraTickets = async (authToken, projectID) => {
         tickets.push({
           ID: response.data.issues[i].key,
           Title: response.data.issues[i].fields.summary,
+          // Description: response.data.issues[i].fields.description,
           Status: response.data.issues[i].fields.status.name,
           Priority: response.data.issues[i].fields.priority.name,
           Type: response.data.issues[i].fields.issuetype.name,
@@ -73,19 +76,18 @@ const getJiraTickets = async (authToken, projectID) => {
       console.log(error);
     });
 
+    console.log(tickets);
     return tickets;
 };
 
 // get all projects for a user
 server.get("/projects", async (request, reply) => {
-  const authToken = createAuthToken(chrisEmail);
-  return getProjectsFromJira(authToken);
+  return getProjectsFromJira();
 });
 
 // get open tickets within a project
 server.get("/opentickets", async (request, reply) => {
-  const authToken = createAuthToken(chrisEmail);
-  return getJiraTickets(authToken, 13511);
+  return getOpenJiraTickets(13511);
 });
 
 // get all tickets for a project
@@ -94,7 +96,7 @@ server.get("/alltickets", async (request, reply) => {
 });
 
 // assign a ticket to the user
-server.post("/projects", async (request, reply) => {
+server.post("/assign", async (request, reply) => {
   return { hello: "world" };
 });
 
