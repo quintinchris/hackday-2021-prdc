@@ -9,7 +9,7 @@
     [X] get projects
     [X] get open tickets for that project
     [X] get all tickets for that project
-    [] assign a ticket to the user
+    [X] assign a ticket to the user
 3. Make front end to display data
     - console?
     - React?

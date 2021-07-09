@@ -141,7 +141,7 @@ const getUserByEmail = async (userEmail) => {
     .catch((error) => {
       console.log(error);
     });
-    console.log(user);
+    user.message = `Ticket is now assigned to ${user.name}`;
     return user;
 };
 
@@ -183,12 +183,13 @@ server.get("/alltickets", async (request, reply) => {
   return getAllJiraTickets(13511);
 });
 
-// assign a ticket to the user
-server.put("/assign", async (request, reply) => {
+// get a user by email
+server.get("/user", async (request, reply) => {
   return getUserByEmail(chrisEmail);
 });
 
-server.get("/user", async (request, reply) => {
+// assign a ticket to the user
+server.put("/assign", async (request, reply) => {
   return getUserByEmail(chrisEmail);
 });
 
