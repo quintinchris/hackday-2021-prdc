@@ -134,19 +134,20 @@ This is an example of how to list things you need to use the software and how to
    cd server && npm install
    cd prdc-web-client && npm install
    ```
-3. Start the server
+3. To start both the client & the server simultaneously, run
+   ```sh
+   cd prdc-web-client && npm run dev
+   ```
+
+   To start the server, run
    ```sh
    cd server && node index.js
-   ```
-   or
-   ```sh
-   cd prdc-web-client && npm run server
    ```
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-###API Routes
+### API Routes
 1. Get a user by Email
    ```sh
    http://localhost:3001/user:/userEmail
@@ -175,6 +176,11 @@ This is an example of how to list things you need to use the software and how to
 ## Roadmap
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+
+These are the features we would develop next, in order of priority:
+1. Create a Slack App to communicate with the API
+2. Configure more API routes to provide more functionality, such as creating an issue 
+3. Integrate with Rally, to allow users to find open tickets from both Rally and Jira
 
 
 
