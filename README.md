@@ -44,7 +44,7 @@
   <p align="center">
     A Jira ticket management system: a React app that will help users find available tickets when they have the capacity to pick up something.
     <br />
-    <a href="https://github.com/QuintinChris/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/QuintinChris/hackday-2021-prdc"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/QuintinChris/hackday-2021-prdc">View Demo</a>
@@ -223,6 +223,6 @@ Project Link: [https://github.com/QuintinChris/hackday-2021-prdc](https://github
 [contributors-shield]: https://img.shields.io/github/contributors/QuintinChris/hackday-2021-prdc?style=for-the-badge
 [contributors-url]: https://github.com/QuintinChris/hackday-2021-prdc/graphs/contributors
 [stars-shield]: https://img.shields.io/github/stars/QuintinChris?style=for-the-badge
-[stars-url]: https://github.com/QuintinChris/repo/stargazers
+[stars-url]: https://github.com/QuintinChris/hackday-2021-prdc/stargazers
 [issues-shield]: https://img.shields.io/github/issues/QuintinChris/hackday-2021-prdc?style=for-the-badge
 [issues-url]: https://github.com/QuintinChris/hackday-2021-prdc/issues
