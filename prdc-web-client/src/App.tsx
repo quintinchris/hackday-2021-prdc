@@ -13,6 +13,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CActions from './components/CActions';
+import RealApiClient from './api/RealApiClient';
 
 class App extends React.Component<App_Props, App_State> {
 	state: App_State = {
@@ -24,16 +25,22 @@ class App extends React.Component<App_Props, App_State> {
 				timeSent: new Date(),
 				title: `Welcome`
 			},
-			...mockMessages
+			//...mockMessages
 		],
 		user: mockUser,
-		apiClient: new MockApiClient()
+		apiClient: new RealApiClient() //new MockApiClient()
+	}
+
+	constructor(props: App_Props) {
+		super(props);
+		this.addMessage = this.addMessage.bind(this);
+		//this.render.bind(this);
 	}
 
 	addMessage(newMessage: Message): void {
-		this.state.currentMessages.push(newMessage);
+		//this.state.currentMessages.push(newMessage);
 		this.setState({
-			currentMessages: this.state.currentMessages
+			currentMessages: [...this.state.currentMessages].concat(newMessage)
 		});
 	}
 

@@ -26,8 +26,8 @@ interface JiraTicket {
 	ticketId: string;
 	status: string;
 	description: string;
-	createdTime: Date;
-	updatedTime: Date;
+	createdTime?: Date;
+	updatedTime?: Date;
 
 	assignee?: JiraPerson;
 	pairAssignee?: JiraPerson;

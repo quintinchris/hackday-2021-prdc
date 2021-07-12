@@ -80,21 +80,21 @@ class CActions extends React.Component<CActions_Props, CActions_State> {
 
 	renderButton_getProjects() {
 		return (
-			<Button variant="primary" onClick={async() => await this.handleGetProjects()}>Get available projects</Button>
+			<Button className="ActionButton" variant="primary" onClick={async() => await this.handleGetProjects()}>Get available projects</Button>
 		);		
 	}
 
 	renderButton_selectProject(choice: JiraProject) {
 		return (
-			<Button variant="primary" onClick={async() => await this.handleChooseProject(choice)}>{choice.key}</Button>
+			<Button className="ActionButton" variant="primary" onClick={async() => await this.handleChooseProject(choice)}>{choice.key}</Button>
 		);		
 	}
 
 	renderGetTicketButtons() {
 		return (
 			<>
-				<Button variant="info" onClick={async() => await this.handleGetTickets(true)}>Get unassigned tickets</Button>
-				<Button variant="secondary" onClick={async() => await this.handleGetTickets(false)}>Get all tickets</Button>
+				<Button className="ActionButton" variant="info" onClick={async() => await this.handleGetTickets(true)}>Get unassigned tickets</Button>
+				<Button className="ActionButton" variant="secondary" onClick={async() => await this.handleGetTickets(false)}>Get all tickets</Button>
 			</>
 		);
 	}

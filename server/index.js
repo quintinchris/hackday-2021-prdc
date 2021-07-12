@@ -194,26 +194,40 @@ const assignTicketToUser = async (accountId, ticketID) => {
 
 // get all projects for a user
 server.get("/projects", async (request, reply) => {
+  reply.header(`Access-Control-Allow-Origin`, `*`);
   return getProjectsFromJira();
 });
 
 // get open tickets within a project
 server.get("/opentickets/:projectKey", async (request, reply) => {
+  reply.header(`Access-Control-Allow-Origin`, `*`);
   return getOpenJiraTickets(request.params.projectKey);
 });
 
 // get all tickets for a project
 server.get("/alltickets/:projectKey", async (request, reply) => {
+  reply.header(`Access-Control-Allow-Origin`, `*`);
   return getAllJiraTickets(request.params.projectKey);
 });
 
 // get a user by email
 server.get("/user:/userEmail", async (request, reply) => {
+  reply.header(`Access-Control-Allow-Origin`, `*`);
   return getUserbyEmail(request.params.userEmail);
+});
+
+server.options("/assign/:userEmail/:ticketId", async (request, reply) => {
+  reply.header(`Access-Control-Allow-Origin`, `*`);
+  reply.header(`Access-Control-Allow-Headers`, `Origin, X-Requested-With, Content-Type, Accept`);
+  reply.header(`Access-Control-Allow-Methods`, `POST, PUT, GET, OPTIONS`);
+  return `all clear`;
 });
 
 // assign a ticket to the user
 server.put("/assign/:userEmail/:ticketId", async (request, reply) => {
+  reply.header(`Access-Control-Allow-Origin`, `*`);
+  reply.header(`Access-Control-Allow-Headers`, `Origin, X-Requested-With, Content-Type, Accept`);
+  reply.header(`Access-Control-Allow-Methods`, `POST, PUT, GET, OPTIONS`);
   return getUserAndAssignTicket(request.params.userEmail, request.params.ticketId);
 });
 
