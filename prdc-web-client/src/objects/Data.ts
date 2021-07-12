@@ -17,7 +17,7 @@ interface JiraPerson {
 }
 
 interface CurrentUser extends JiraPerson {
-
+	emailAddress: string;
 }
 
 interface JiraTicket {
@@ -92,12 +92,22 @@ interface CTicketDisplay_State {
 	visible: boolean;
 }
 
+interface CActions_Props {
+	user: CurrentUser;
+	apiClient: PrdcServerApiClient;
+	responseCallback: (outputMessage: Message) => void;
+}
+
+interface CActions_State {
+	currentProject?: JiraProject;
+	projectChoices?: JiraProject[];
+}
 
 export type {
 	CMessage_Props, CMessage_State, JiraPerson, JiraTicket, Message,
 	CClaimButton_Props, CClaimButton_State, CTicketDisplay_Props, 
 	CTicketDisplay_State, CurrentUser, App_Props, 
-	App_State, JiraProject
+	App_State, JiraProject, CActions_Props, CActions_State
 };
 
 export {

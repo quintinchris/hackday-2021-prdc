@@ -18,6 +18,9 @@ const mockTickets: JiraTicket[] = [
 		updatedTime: new Date(`2021-07-09T09:30:00Z`),
 		assignee: {
 			fullName: `Rohith Hegde`
+		},
+		pairAssignee: {
+			fullName: `Prasanth Louis`
 		}
 	},
 	{
@@ -68,7 +71,8 @@ const mockMessages: Message[] = [
 ]
 
 const mockUser: CurrentUser = {
-	fullName: `Rohith Hegde`
+	fullName: `Rohith Hegde`,
+	emailAddress: `nil@null.nl`
 }
 
 export {

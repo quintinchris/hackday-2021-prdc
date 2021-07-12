@@ -12,6 +12,7 @@ import "./index.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import CActions from './components/CActions';
 
 class App extends React.Component<App_Props, App_State> {
 	state: App_State = {
@@ -29,25 +30,45 @@ class App extends React.Component<App_Props, App_State> {
 		apiClient: new MockApiClient()
 	}
 
+	addMessage(newMessage: Message): void {
+		this.state.currentMessages.push(newMessage);
+		this.setState({
+			currentMessages: this.state.currentMessages
+		});
+	}
+
 	render() {
 		return (
-			<Container>
-				{
-					this.state.currentMessages.map((message: Message) => {
-						return (
-							<>
-								<Row className="WideCenterRow">
-									<Col>
-										<CMessage message={message} user={this.state.user} apiClient={this.state.apiClient}/>
-									</Col>
-								</Row>
-							</>
-						)
-					})
-					/* <CActions/> */
-				}
-			</Container>
-			
+			<div className="App-background">
+				<Container>
+					{
+						this.state.currentMessages.map((message: Message) => {
+							return (
+								<>
+									<Row className="WideCenterRow">
+										<Col>
+											<CMessage message={message} 
+												user={this.state.user} 
+												apiClient={this.state.apiClient}
+											/>
+										</Col>
+									</Row>
+								</>
+							)})
+					}
+					<>
+						<Row className="WideCenterRow"> 
+							<Col className="PaddedActions">
+								<CActions 
+									user={this.state.user} 
+									apiClient={this.state.apiClient} 
+									responseCallback={this.addMessage}
+								/>
+							</Col>
+						</Row>
+					</>
+				</Container>
+			</div>
 		);
 	}
 }
