@@ -35,8 +35,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/QuintinChris/hackday-2021-prdc">
-    <img src="logo.png" alt="Logo" width="150" height="150">
+  <a>
+    <img src="minilogo.png" alt="Logo" width="150" height="150">
   </a>
 
   <h3 align="center">PRDC</h3>
@@ -44,14 +44,14 @@
   <p align="center">
     A Jira ticket management system: a React app that will help users find available tickets when they have the capacity to pick up something.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/QuintinChris/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/QuintinChris/hackday-2021-prdc">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/QuintinChris/hackday-2021-prdc/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/QuintinChris/hackday-2021-prdc/issues">Request Feature</a>
   </p>
 </p>
 
@@ -87,7 +87,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[! Hackday 2021 Prdc](https://github.com/QuintinChris/hackday-2021-prdc)
 
 We often find ourselves and our team members looking for new tickets they can pick up, once they have some free time on their hands. We developed this React app as a simpler way to find new tickets that are available, as opposed to clicking around in Jira and struggling with their UI. 
 Our intentions were to build a Slack app to use with our API, however we realized it would take too long to get permission to create a new workspace to test our app in. For the time being, we created a React UI for users to interact with.
@@ -175,7 +175,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/QuintinChris/hackday-2021-prdc/issues) for a list of proposed features (and known issues).
 
 These are the features we would develop next, in order of priority:
 1. Create a Slack App to communicate with the API
@@ -207,9 +207,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Zuri - (ZuriStream@moodys.com) - email
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/QuintinChris/hackday-2021-prdc](https://github.com/QuintinChris/hackday-2021-prdc)
 
 
 
@@ -220,9 +220,9 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/QuintinChris/hackday-2021-prdc?style=for-the-badge
 [contributors-url]: https://github.com/QuintinChris/hackday-2021-prdc/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
+[stars-shield]: https://img.shields.io/github/stars/QuintinChris?style=for-the-badge
+[stars-url]: https://github.com/QuintinChris/repo/stargazers
+[issues-shield]: https://img.shields.io/github/issues/QuintinChris/hackday-2021-prdc?style=for-the-badge
+[issues-url]: https://github.com/QuintinChris/hackday-2021-prdc/issues
