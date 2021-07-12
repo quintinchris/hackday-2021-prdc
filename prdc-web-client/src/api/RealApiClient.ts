@@ -2,6 +2,31 @@ import { PrdcServerApiClient, ApiResponse_Project, ApiResponse_Ticket } from "..
 import { JiraTicket, JiraProject, JiraPerson } from "../objects/Data";
 import Axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 
+const ASSIGNEES: string[] = [`Rohith Hegde`, `Demi Jiang`, `Prasanth Louis`, `Chris Quintin`, `Ratnadeep Nayak`, `Daniel Jankowski`, `Johnson Joseph`, `Simon Wosko`];
+
+function chooseRandomAssignees(): JiraPerson[] {
+	const remainingAssignees: string[] = ASSIGNEES.slice();
+	const getRandIndex = (): number => {
+		return Math.floor(Math.random() * remainingAssignees.length);
+	}
+
+	const mainAssigneeName: string = remainingAssignees.splice(getRandIndex(), 1)[0];
+	const pairAssigneeName: string = remainingAssignees.splice(getRandIndex(), 1)[0];
+
+	const mainAssignee: JiraPerson = {
+		fullName: mainAssigneeName
+	};
+
+	const pairAssignee: JiraPerson = {
+		fullName: pairAssigneeName
+	};
+
+	if (Math.random() < 0.5)
+		return [mainAssignee, pairAssignee];
+	else
+		return [mainAssignee];
+}
+
 class RealApiClient implements PrdcServerApiClient {
 	serverHostname: string = `localhost`;
 	serverPort: number = 3001;
@@ -30,13 +55,6 @@ class RealApiClient implements PrdcServerApiClient {
 		const tickets: JiraTicket[] = [];
 		const defaultLabels: string[] = [`UAT`, `Defect`, `WEB`]
 
-		const defaultAssignee: JiraPerson = {
-			fullName: `Prasanth Louis`
-		};
-		const defaultPairAssignee: JiraPerson ={
-			fullName: `Rohith Hegde`
-		};
-
 		resp.forEach((ticket: ApiResponse_Ticket) => {
 			tickets.push({
 				project: project,
@@ -60,14 +78,16 @@ class RealApiClient implements PrdcServerApiClient {
 		const tickets: JiraTicket[] = [];
 		const defaultLabels: string[] = [`UAT`, `Defect`, `WEB`]
 
-		const defaultAssignee: JiraPerson = {
-			fullName: `Prasanth Louis`
-		};
-		const defaultPairAssignee: JiraPerson ={
-			fullName: `Rohith Hegde`
-		};
+		// const defaultAssignee: JiraPerson = {
+		// 	fullName: `Prasanth Louis`
+		// };
+		// const defaultPairAssignee: JiraPerson ={
+		// 	fullName: `Rohith Hegde`
+		// };
 
 		resp.forEach((ticket: ApiResponse_Ticket) => {
+			const randomAssignees: JiraPerson[] = chooseRandomAssignees();
+			
 			tickets.push({
 				project: project,
 				ticketId: ticket.ID,
@@ -75,8 +95,8 @@ class RealApiClient implements PrdcServerApiClient {
 				status: ``,
 				title: ticket.Title,
 				labels: defaultLabels,
-				assignee: defaultAssignee,
-				pairAssignee: defaultPairAssignee,
+				assignee: randomAssignees[0],
+				pairAssignee: randomAssignees.length > 1 ? randomAssignees[1] : undefined,
 			})
 		});
 
