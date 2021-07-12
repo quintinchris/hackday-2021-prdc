@@ -39,34 +39,36 @@ class App extends React.Component<App_Props, App_State> {
 
 	render() {
 		return (
-			<Container>
-				{
-					this.state.currentMessages.map((message: Message) => {
-						return (
-							<>
-								<Row className="WideCenterRow">
-									<Col>
-										<CMessage message={message} 
-											user={this.state.user} 
-											apiClient={this.state.apiClient}
-										/>
-									</Col>
-								</Row>
-							</>
-						)})
-				}
-				<>
-					<Row className="WideCenterRow">
-						<Col className="PaddedActions">
-							<CActions 
-								user={this.state.user} 
-								apiClient={this.state.apiClient} 
-								responseCallback={this.addMessage}
-							/>
-						</Col>
-					</Row>
-				</>
-			</Container>
+			<div className="App-background">
+				<Container>
+					{
+						this.state.currentMessages.map((message: Message) => {
+							return (
+								<>
+									<Row className="WideCenterRow">
+										<Col>
+											<CMessage message={message} 
+												user={this.state.user} 
+												apiClient={this.state.apiClient}
+											/>
+										</Col>
+									</Row>
+								</>
+							)})
+					}
+					<>
+						<Row className="WideCenterRow"> 
+							<Col className="PaddedActions">
+								<CActions 
+									user={this.state.user} 
+									apiClient={this.state.apiClient} 
+									responseCallback={this.addMessage}
+								/>
+							</Col>
+						</Row>
+					</>
+				</Container>
+			</div>
 		);
 	}
 }

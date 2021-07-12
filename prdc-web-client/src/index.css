@@ -47,3 +47,20 @@ code {
 .UserMessageTitle {
   color: #FF5555
 }
+
+.badge {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  font-size: 35px;
+}
+
+.AssigneeSpan {
+  font-size: 150%;
+  margin-left: 10px;
+}
+
+.AssigneeName {
+  font-size: 80%;
+  margin-left: 10px;
+}
