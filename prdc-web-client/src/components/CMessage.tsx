@@ -2,6 +2,7 @@ import { CMessage_State, CMessage_Props, JiraTicket } from "../objects/Data";
 import React from 'react';
 import Toast from 'react-bootstrap/Toast'
 import CTicketDisplay from "./CTicketDisplay";
+import ReactHtmlParser from 'react-html-parser'; 
 import "../index.css";
 
 class CMessage extends React.Component<CMessage_Props, CMessage_State> {
@@ -44,7 +45,7 @@ class CMessage extends React.Component<CMessage_Props, CMessage_State> {
 						<small>{this.getMessageAgeMins()} min. ago</small>
 					</Toast.Header>
 					<Toast.Body>
-						<p>{this.props.message.text}</p>
+						<p>{ReactHtmlParser(this.props.message.text)}</p>
 						{
 							this.props.message.tickets ? 
 								this.props.message.tickets.map((ticket: JiraTicket) => {

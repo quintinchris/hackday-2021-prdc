@@ -11,6 +11,22 @@ interface PrdcServerApiClient {
 	claimTicket(ticketToClaim: JiraTicket): Promise<void>;
 }
 
+interface ApiResponse_Project {
+	ID: string;
+	Key: string;
+	Name: string;
+}
+
+interface ApiResponse_Ticket {
+	ID: string;
+	Title: string;
+	Status: string;
+	Priority: string;
+	Type: string;
+	Release: string;
+}
+
+
 export type {
-	PrdcServerApiClient
+	PrdcServerApiClient, ApiResponse_Project, ApiResponse_Ticket
 };

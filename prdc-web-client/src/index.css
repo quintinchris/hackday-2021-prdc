@@ -44,6 +44,10 @@ code {
   margin-bottom: 10px;
 }
 
+.ActionButton {
+  margin: 10px;
+}
+
 .UserMessageTitle {
   color: #FF5555
 }

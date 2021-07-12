@@ -20,14 +20,15 @@ class CClaimButton extends React.Component<CClaimButton_Props, CClaimButton_Stat
 	}
 
 	ticketClaimedByUser(): boolean {
-		const assigneeName: string | undefined = this.props.ticket.assignee?.fullName;
+		/*const assigneeName: string | undefined = this.props.ticket.assignee?.fullName;
 		const pairAssigneeName: string | undefined = this.props.ticket.pairAssignee?.fullName;
 		const userName: string = this.props.user.fullName;
 
 		if ((assigneeName && assigneeName === userName) || 
 			(pairAssigneeName && pairAssigneeName === userName))
 			return true;
-		else return false;
+		else return false;*/
+		return true;
 	}
 
 	getButtonVariant(): string {
