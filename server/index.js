@@ -8,8 +8,6 @@ const searchURL = "https://ma-contentsolutions.atlassian.net/rest/api/2/search";
 const userSearchURL = "https://ma-contentsolutions.atlassian.net/rest/api/2/user/search";
 const projectsURL =
   "https://ma-contentsolutions.atlassian.net/rest/api/2/issue/createmeta";
-// const prasanthEmail = "prasanth.louis@moodys.com";
-const chrisEmail = "chris.quintin@moodys.com";
 
 const createAuthToken = (email) => {
   let authToken = `Basic ${Buffer.from(
@@ -19,7 +17,7 @@ const createAuthToken = (email) => {
 };
 
 const getProjectsFromJira = async () => {
-  const authToken = createAuthToken(chrisEmail);
+  const authToken = createAuthToken(process.env.EMAIL);
   let projects = [];
   const res = await axios
     .get(projectsURL, {
@@ -44,7 +42,7 @@ const getProjectsFromJira = async () => {
 };
 
 const getOpenJiraTickets = async (projectKey) => {
-  const authToken = createAuthToken(chrisEmail);
+  const authToken = createAuthToken(process.env.EMAIL);
   let tickets = [];
   const res = await axios
     .get(searchURL, {
@@ -81,7 +79,7 @@ const getOpenJiraTickets = async (projectKey) => {
 };
 
 const getAllJiraTickets = async (projectID) => {
-  const authToken = createAuthToken(chrisEmail);
+  const authToken = createAuthToken(process.env.EMAIL);
   let tickets = [];
   const res = await axios
     .get(searchURL, {
@@ -119,7 +117,7 @@ const getAllJiraTickets = async (projectID) => {
 };
 
 const getUserbyEmail = async (userEmail, ticketId) => {
-  const authToken = createAuthToken(chrisEmail);
+  const authToken = createAuthToken(process.env.EMAIL);
   let user = {};
   const res = await axios
     .get(searchURL, {
@@ -143,7 +141,7 @@ const getUserbyEmail = async (userEmail, ticketId) => {
 };
 
 const getUserAndAssignTicket = async (userEmail, ticketId) => {
-  const authToken = createAuthToken(chrisEmail);
+  const authToken = createAuthToken(process.env.EMAIL);
   let user = {};
   let ticket;
   const res = await axios
@@ -171,7 +169,7 @@ const getUserAndAssignTicket = async (userEmail, ticketId) => {
 
 const assignTicketToUser = async (accountId, ticketID) => {
   const assignTicketURL = `https://ma-contentsolutions.atlassian.net/rest/api/2/issue/${ticketID}/assignee`;
-  const authToken = createAuthToken(chrisEmail);
+  const authToken = createAuthToken(process.env.EMAIL);
   const bodyData = `{
     "accountId": "${accountId}"
   }`;
@@ -211,7 +209,7 @@ server.get("/alltickets/:projectKey", async (request, reply) => {
 });
 
 // get a user by email
-server.get("/user:/userEmail", async (request, reply) => {
+server.get("/user/:userEmail", async (request, reply) => {
   reply.header(`Access-Control-Allow-Origin`, `*`);
   return getUserbyEmail(request.params.userEmail);
 });
