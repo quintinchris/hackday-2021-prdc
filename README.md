@@ -122,6 +122,12 @@ This is an example of how to list things you need to use the software and how to
   node -v
   ```
   If you do not have node installed, follow the instructions located at https://nodejs.org/en/download/
+* Jira API Token
+  To run the project, you will need to have an API_TOKEN environment variable. To create a Jira API token, please follow the instructions located at 
+  Save this API token to include in the .env file described below.
+
+
+
 
 ### Installation
 
@@ -134,7 +140,12 @@ This is an example of how to list things you need to use the software and how to
    cd server && npm install
    cd prdc-web-client && npm install
    ```
-3. To start both the client & the server simultaneously, run
+3. Create a .env file in the root, and add the following environment variables:
+   ```sh
+   API_TOKEN=YOUR_TOKEN_HERE
+   EMAIL=YOUR_EMAIL_HERE
+   ```
+4. To start both the client & the server simultaneously, run
    ```sh
    cd prdc-web-client && npm run dev
    ```
@@ -150,7 +161,7 @@ This is an example of how to list things you need to use the software and how to
 ### API Routes
 1. Get a user by Email
    ```sh
-   http://localhost:3001/user:/userEmail
+   http://localhost:3001/user/:userEmail
    ```
 2. Get all projects
    ```sh
